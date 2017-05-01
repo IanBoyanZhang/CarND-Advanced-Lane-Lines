@@ -1,11 +1,9 @@
 [image1]: ./output_images/undistort.png "Undistorted"
 [image2]: ./output_images/chessboard.png "Chessboard"
 [image3]: ./output_images/chessboard_warped.png "Chessboard Warped"
+[image4]: ./output_images/original.png "Original"
+[image5]: ./output_images/test_warped.png "test_warped"
 
-
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
@@ -29,10 +27,33 @@ Differences can be seen around the edge of images.
 
 ![Undistorted and warped][image3]
 
-Illustrating using generated warped transform matrix to peform warp perspective transform
+Illustrating using generated warped transform matrix to peform warp perspective transform. Same tranformation matrix will be used to generate bird eye view.
 
-####
+## Bird eye view
 
+Please see _warped_ function in cell 7 of advanced lane line for _source (base\_points)_ and _destination (dst\_bas\_points)_ used in warp transformation.
+
+Below strategy is used for programmatically extract parallel points in sample images
+
+```python
+  base_points = [[w // 2 - 76, h * .625], [w // 2 + 76, h * .625], [-100, h], [w + 100, h]]
+  dst_base_points = [[100, 0], [w - 100, 0], [100, h], [w - 100, h]]
+```
+
+where _h_ and _w_ is height and width of sample images
+
+
+Applying warp transform with above parallel points set up on below test images
+
+![Test images][image4]
+
+We obtain
+
+![Warped_test][image5]
+
+
+Other ideas worth exploring includes ensemble method, adding an independent layer tuned for challenging frames such as images under the shadow or with background rapidlly changing, then superimpose
+this layer onto universal layer.
 
 
 ##Writeup Template
