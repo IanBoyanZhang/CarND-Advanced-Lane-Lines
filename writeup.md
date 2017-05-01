@@ -6,6 +6,8 @@
 [image6]: ./output_images/hist.png "histogram"
 [image7]: ./output_images/masked_curve.png "masked_curve"
 [image8]: ./output_images/masked_straight.png "masked_straight"
+[image9]: ./output_images/curve_fitting_fill.png "Curve fitting"
+
 
 
 [video1]: ./project_video.mp4 "Video"
@@ -73,7 +75,13 @@ this layer onto universal layer.
 
 ![masked_straight][image8]
 
+## Second order curve fitting
 
+Cell 20 in _advanced\_lane\_line  notebook
+
+![Curve fitting][image9]
+
+Cell 27 using curvature measuring formula in previous cell
 
 ##Writeup Template
 ###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
