@@ -85,6 +85,13 @@ Road radius estimation _eval\_curve_ in Cell 28. In generated video, estimated c
 
 Two slightly different curve fitting methods are used to estimated curvatures.
 
+Which can be found in cell 28 and cell 22. In final implementation, we choose using _eval\_curve_ function defined in cell 28. 
+
+According to side channel information, estimated curvature generated from this function is closer to ground truth than counterparts generated from _eval\_curve\_by\_pixles_, since it leverage 
+second order polynomial fitting described in cell 28 mark down. Both approaches can be used to evaluate vehicle center offset under same cooridnation. Since same meteres per pixel scale parameter
+is used.
+
+meters per pixel in image horizontal dimension.
 
 ## Discussion
 
@@ -93,16 +100,20 @@ Two slightly different curve fitting methods are used to estimated curvatures.
 Completed pipeline is in cell 30 with interframe smoothing function _process\_curr\_frame_ for taking navie average over last _MAX\_Q_\_LEN_ number of frames.
 
 This approach significantly improved stability of curve prediction especially for challenging frames such as images under tree shadow. Predicatable downside for this low pass filter 
-approach is system incresing system reaction time. Considering vehicle movement is continuously, this downside is acceptable for this usecase.
+approach is system incresing system reaction time. Considering vehicle movement is continuously, downside is acceptable for this usecase.
 
-In final pipeline implementation the parameter is set as 37, as it hits a good balance between reaction speed and interframe smoothness. This method may fail when
+In final pipeline implementation the parameter is set as 37, as it hits a good balance between reaction speed and interframe smoothness. This method may have issues reacting rapidly enough or robustly enough when
   
   * Vehicle motion vector changes abruptly in short amount of time 
   
   * Continously and rapidlly  lighting condition changes.  
 
-  * Rapidly curve
+  * Rapidly curve changing likely encountered in wandering roads 
 
+Another idea worths experimenting is using ensemble approach by adding independent detection layers tuned for challenging light condition or low contrast frames. Then superimpose this layer onto existed detection layers. 
+
+More complicated approaches can be constructed by assigning decision weight on look ahead/back filter to reduce effect imposed by more outdated frame information; dynamically tuning look back memory queue to drop frame information
+acquired under poor detection conditions.
 
 Perspective transform serves naturally as a crop filter. By limiting ROI of input image, it significantly reduces the background noise in image.
 
@@ -111,8 +122,10 @@ Perspective transform serves naturally as a crop filter. By limiting ROI of inpu
 Initially, when working with test images, unde RGB space, the _red_ and _green_ channel seems working well in identifying yellow and white lane lines. An ensemble method (logic AND) is used
 in combining the two channels.
 
-However, it is challenging for RGB channel color masking to perform well under poor lighting conditions, such as under tree shadow. We find HLS (Hue, Lightness, Saturation) has good performace in picking out
-lane line features under different lightingg conditions.
+However, it is challenging for RGB channel color masking to perform well under poor lighting conditions, such as under tree shadow. 
+
+We find HLS (Hue, Lightness, Saturation) has good performace in picking out
+lane line features under different light conditions, since lightness is extracted as independent feature channel. Combing color thresholding, saturation channel masking is good at picking out artificial marks such as lane lines.
 
 ## Video
 
@@ -120,4 +133,4 @@ Marked video
 
 ![Output video][video1]
 
-[Alternative link](https://youtu.be/j5_vjIFL-UQ)
+[Alternative link](https://youtu.be/OQienj9xbQI)
