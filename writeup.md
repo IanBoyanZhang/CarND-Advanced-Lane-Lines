@@ -88,10 +88,9 @@ Two slightly different curve fitting methods are used to estimated curvatures.
 Which can be found in cell 28 and cell 22. In final implementation, we choose using _eval\_curve_ function defined in cell 28. 
 
 According to side channel information, estimated curvature generated from this function is closer to ground truth than counterparts generated from _eval\_curve\_by\_pixles_, since it leverage 
-second order polynomial fitting described in cell 28 mark down. Both approaches can be used to evaluate vehicle center offset under same cooridnation. Since same meteres per pixel scale parameter
-is used.
+second order polynomial fitting described in cell 28 mark down. Both approaches can be used to evaluate vehicle center offset under same cooridnation. Since same meters per pixel in image horizontal dimension.
 
-meters per pixel in image horizontal dimension.
+Please see _detect\_lane\_line__ (in cell 30) function _draw\_text_ for more details.
 
 ## Discussion
 
@@ -126,6 +125,10 @@ However, it is challenging for RGB channel color masking to perform well under p
 
 We find HLS (Hue, Lightness, Saturation) has good performace in picking out
 lane line features under different light conditions, since lightness is extracted as independent feature channel. Combing color thresholding, saturation channel masking is good at picking out artificial marks such as lane lines.
+
+### Future work
+
+If time allowed, we would rafactor notebook code to more modulized, small python functions scripts to help perform further experiments.
 
 ## Video
 
