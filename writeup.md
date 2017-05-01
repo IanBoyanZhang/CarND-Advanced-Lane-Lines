@@ -3,9 +3,11 @@
 [image3]: ./output_images/chessboard_warped.png "Chessboard Warped"
 [image4]: ./output_images/original.png "Original"
 [image5]: ./output_images/test_warped.png "test_warped"
+[image6]: ./output_images/hist.png "histogram"
+[image7]: ./output_images/masked_curve.png "masked_curve"
+[image8]: ./output_images/masked_straight.png "masked_straight"
 
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+
 [video1]: ./project_video.mp4 "Video"
 
 
@@ -54,6 +56,23 @@ We obtain
 
 Other ideas worth exploring includes ensemble method, adding an independent layer tuned for challenging frames such as images under the shadow or with background rapidlly changing, then superimpose
 this layer onto universal layer.
+
+## Edges Masked image  
+
+ * Gradient Thresholds using _abs sobel mask_ and _mag_sobel_mask
+
+ * HLS(Color Space) Mask 
+
+ are used to obtain high contrast lane line features. An illustration of histogram feature is shown below 
+
+![histogram][image6]
+
+ Obtained masked images
+
+![masked_curve][image7]
+
+![masked_straight][image8]
+
 
 
 ##Writeup Template

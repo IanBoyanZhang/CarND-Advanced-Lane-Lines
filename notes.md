@@ -31,3 +31,9 @@ Reset
 Smoothing
 
 Drawing
+
+## References
+
+[David Ventimiglia Advanced Lane Lines](http://davidaventimiglia.com/advanced_lane_lines.html)
+
+[Detecting Road features](http://navoshta.com/detecting-road-features/)
