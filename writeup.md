@@ -1,5 +1,6 @@
 [image1]: ./output_images/undistort.png "Undistorted"
-[image2]: ./output_images/Chessboard.png "Chessboard"
+[image2]: ./output_images/chessboard.png "Chessboard"
+[image3]: ./output_images/chessboard_warped.png "Chessboard Warped"
 
 
 [image2]: ./test_images/test1.jpg "Road Transformed"
@@ -14,7 +15,9 @@
 
 Implementation can be found in _camera_calibration_ jupyter notebook. 
 
-Chessboard undistortion visualization is located in cell 3.
+Chessboard undistortion visualization is located in _camera_calibartion_ cell 3 and _advanced_lane_line_ notebook cell 3. 
+
+Camera calibration, geometric image transformation matrix M, cell 2.
 
 ![Chessboard][image2]
 
@@ -22,7 +25,11 @@ _cv2.undistort_ in cell 6, is used to undistort image based chessboard calibrati
 
 ![Undistortion][image1]
 
-Difference can be seen around the edge of images. 
+Differences can be seen around the edge of images. 
+
+![Undistorted and warped][image3]
+
+Illustrating using generated warped transform matrix to peform warp perspective transform
 
 ####
 
