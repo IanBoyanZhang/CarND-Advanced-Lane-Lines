@@ -83,12 +83,36 @@ Cell 27 using curvature measuring formula in previous cell
 
 Road radius estimation _eval\_curve_ in Cell 28. In generated video, estimated curvature is around 600m to 2000m. 
 
-## Pipeline and interframe filtering
+Two slightly different curve fitting methods are used to estimated curvatures.
+
+
+## Discussion
+
+***Pipeline and interframe filtering***
 
 Completed pipeline is in cell 30 with interframe smoothing function _process\_curr\_frame_ for taking navie average over last _MAX\_Q_\_LEN_ number of frames.
 
 This approach significantly improved stability of curve prediction especially for challenging frames such as images under tree shadow. Predicatable downside for this low pass filter 
 approach is system incresing system reaction time. Considering vehicle movement is continuously, this downside is acceptable for this usecase.
+
+In final pipeline implementation the parameter is set as 37, as it hits a good balance between reaction speed and interframe smoothness. This method may fail when
+  
+  * Vehicle motion vector changes abruptly in short amount of time 
+  
+  * Continously and rapidlly  lighting condition changes.  
+
+  * Rapidly curve
+
+
+Perspective transform serves naturally as a crop filter. By limiting ROI of input image, it significantly reduces the background noise in image.
+
+### Color space and thresholding
+
+Initially, when working with test images, unde RGB space, the _red_ and _green_ channel seems working well in identifying yellow and white lane lines. An ensemble method (logic AND) is used
+in combining the two channels.
+
+However, it is challenging for RGB channel color masking to perform well under poor lighting conditions, such as under tree shadow. We find HLS (Hue, Lightness, Saturation) has good performace in picking out
+lane line features under different lightingg conditions.
 
 ## Video
 
