@@ -7,6 +7,8 @@
 [image7]: ./output_images/masked_curve.png "masked_curve"
 [image8]: ./output_images/masked_straight.png "masked_straight"
 [image9]: ./output_images/curve_fitting_fill.png "Curve fitting"
+[image10] ./output_images/centroid.png "Centroid"
+[image11] ./output_images/color-fit-lines.jpg "fit"
 
 [video1]: ./videos/output.mp4 "Video"
 
@@ -72,6 +74,14 @@ this layer onto universal layer.
 ![masked_curve][image7]
 
 ![masked_straight][image8]
+
+The centroid method may fail to find proper lane line when not enough pixels shown in certain windows. 
+
+![centroid][image10]
+
+Hence we use histogram method to highlight lane lines. As shown in classroom, second order polynomial is used to fit lane line position
+
+![Fitting][image11]
 
 ## Second order curve fitting
 
