@@ -65,16 +65,13 @@ this layer onto universal layer.
 
  * HLS(Color Space) Mask 
 
- are used to obtain high contrast lane line features. An illustration of histogram feature is shown below 
-
-![histogram][image6]
+ are used to obtain high contrast lane line features. 
 
  Obtained masked images
 
 ![unmasked][image12]
 
 ![masked_curve][image7]
-
 
 The centroid method may fail to find proper lane line when not enough pixels shown in certain windows. 
 
@@ -83,6 +80,12 @@ The centroid method may fail to find proper lane line when not enough pixels sho
 Hence we use histogram method to highlight lane lines. As shown in classroom, second order polynomial is used to fit lane line position
 
 ![Fitting][image11]
+
+By adding up the pixel values along each column in the image in masked binary image, 
+soo the two most prominent peaks in this histogram will be good indicators of the x-position of 
+the base of the lane lines.
+
+![histogram][image6]
 
 ## Second order curve fitting
 
