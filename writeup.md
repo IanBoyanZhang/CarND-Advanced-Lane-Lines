@@ -12,8 +12,6 @@
 [image12]: ./output_image/unmasked.png
 
 [video1]: ./videos/p5_output.mp4 "p5"
-[video2]: ./videos/output.mp4 "Video"
-
 
 ## Camera Calibration
 
@@ -159,6 +157,4 @@ Compbined with P5 detection
 
 ![Output Video][video1]
 
-![Output video][video2]
-
-[Alternative link](https://youtu.be/OQienj9xbQI)
+[Alternative link](https://youtu.be/x3J2LQzPLkQ)
