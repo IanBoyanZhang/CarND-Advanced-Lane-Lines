@@ -10,7 +10,8 @@
 [image10] ./output_images/centroid.png "Centroid"
 [image11] ./output_images/color-fit-lines.jpg "fit"
 
-[video1]: ./videos/output.mp4 "Video"
+[video1]: ./videos/p5_output.mp4 "p5"
+[video2]: ./videos/output.mp4 "Video"
 
 
 ## Camera Calibration
@@ -138,12 +139,24 @@ lane line features under different light conditions, since lightness is extracte
 
 ### Future work
 
-If time allowed, we would rafactor notebook code to more modulized, small python functions scripts to help perform further experiments.
+If time allowed, we would rafactor notebook code to more modulized, small python function scripts to help perform further experiments.
+
+### Reflection
+Jupyter notebook interact widget is really handy for finding baseline masking thresholds. Other techniques such as combined debugging window suggested by reviewers are really helpful too. However, it seems image inputs are sensitive to certain channel and parameters. 
+
+Would love to explore more ideas on improving detection robustness.
+
+It is also interesting to know how this method used on real systems that need adaptive to various conditions instead of static indoor single device factory setting. For example, increase or reduce slightly around critical values in R channel may signficantly changese pixel distribution. This could cause problems for 
+mass market products in real world may suffer from variance caused by device degradation or manufacturing inconsistency. If regular calibration is required, it would be interesting to investigate potential cost in full life cycle.
 
 ## Video
 
 Marked video
 
-![Output video][video1]
+Compbined with P5 detection
+
+![Output Video][video1]
+
+![Output video][video2]
 
 [Alternative link](https://youtu.be/OQienj9xbQI)
